@@ -6,7 +6,7 @@
 /*   By: tairan <tairan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:02:25 by tairan            #+#    #+#             */
-/*   Updated: 2022/07/11 04:17:00 by tairan           ###   ########.fr       */
+/*   Updated: 2022/07/11 19:51:50 by tairan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 # include "../libft/libft.h"
 
 int		ft_printf(const char *format, ...);
-char	*ft_utoa(unsigned int n, int base);
+char    *ft_utoa(unsigned long n, int base);
 
 #endif

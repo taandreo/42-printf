@@ -6,13 +6,13 @@
 /*   By: tairan <tairan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:17:38 by tairribe          #+#    #+#             */
-/*   Updated: 2022/07/11 04:16:36 by tairan           ###   ########.fr       */
+/*   Updated: 2022/07/11 19:49:14 by tairan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	get_size(unsigned int n, int base)
+static int	get_size(unsigned long n, int base)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ static int	get_size(unsigned int n, int base)
 	return (i);
 }
 
-char    *ft_utoa(unsigned int n, int base)
+char    *ft_utoa(unsigned long n, int base)
 {
 
 	int				re;

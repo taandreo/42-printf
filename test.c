@@ -6,7 +6,7 @@
 /*   By: tairan <tairan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 04:40:51 by tairan            #+#    #+#             */
-/*   Updated: 2022/07/11 07:19:01 by tairan           ###   ########.fr       */
+/*   Updated: 2022/07/11 20:43:47 by tairan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,19 @@ int main(void)
 	printf("ALL:\n");
 	printf("%s %x %x %x\n","printf", int_buffer[0], int_buffer[1], int_buffer[5]);
 	ft_printf("%s %x %x %x\n","ft_printf", int_buffer[0], int_buffer[1], int_buffer[5]);
-	// printf("/////// %%X ///////\n");
-	// printf("printf:    %X\n", -789);
-	// ft_printf("ft_printf: %X\n", -789);
 
+	printf("\n");
+	message = 
+	"************************\n"
+	"********   %p   ********\n"
+	"************************\n";
+
+	printf("%s", message);
+	void *p = NULL;
+	char *s = "abacate";
+	int  *o = malloc(1 * sizeof(int));
+	printf("printf: %p %p %p\n", p, s, o);
+	ft_printf("ft_printf: %p %p %p\n", p, s, o);
 	// printf("/////// %%X ///////\n");
 	// printf("printf:    %X\n", -789);
 	// ft_printf("ft_printf: %X\n", -789);	

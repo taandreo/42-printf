@@ -6,7 +6,7 @@
 /*   By: tairan <tairan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 20:27:20 by tairan            #+#    #+#             */
-/*   Updated: 2022/07/11 06:51:29 by tairan           ###   ########.fr       */
+/*   Updated: 2022/07/11 20:42:49 by tairan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,19 @@ char	*ft_str_toupper(char *s)
 	return (s);
 }
 
+char	*get_ptr(unsigned long p)
+{
+	char	*s;
+	char	*tmp;
+	
+	s = ft_utoa(p, 16);
+	tmp = ft_strjoin("0x", s);
+	free(s);
+	return (tmp);
+}
+
 char	*get_str(char c, va_list args)
 {
-	char *s;
 	if (c == 'c')
 		return (char_to_str(va_arg(args, int)));
 	if (c == '%')
@@ -52,13 +62,11 @@ char	*get_str(char c, va_list args)
 	if (c == 'u')
 		return(ft_utoa(va_arg(args, unsigned int), 10));
 	if (c == 'x')
-	{
-		s = ft_utoa(va_arg(args, unsigned int), 16);
-		printf("%s", s);
-		return(s);
-	}
+		return(ft_utoa(va_arg(args, unsigned int), 16));
 	if (c == 'X')
 		return (ft_str_toupper(ft_utoa(va_arg(args, unsigned int), 16)));
+	if (c == 'p')
+		return(get_ptr((unsigned long) va_arg(args, void*)));
 	return NULL;
 }
 
