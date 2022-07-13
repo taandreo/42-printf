@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tairan <tairan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 04:40:51 by tairan            #+#    #+#             */
-/*   Updated: 2022/07/11 20:43:47 by tairan           ###   ########.fr       */
+/*   Updated: 2022/07/13 01:41:41 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int main(void)
 	"************************\n";
 	int int_buffer[] = { -32, 42, -900, 0, 2147483647, -2147483648 };
 	int i;
+	int len;
 	
 	printf("%s", message);
 
@@ -47,8 +48,10 @@ int main(void)
 	void *p = NULL;
 	char *s = "abacate";
 	int  *o = malloc(1 * sizeof(int));
-	printf("printf: %p %p %p\n", p, s, o);
-	ft_printf("ft_printf: %p %p %p\n", p, s, o);
+	len = printf("printf: %p %p %p", p, s, o);
+	printf(" size: %i\n", len);
+	ft_printf("ft_printf: %p %p %p", p, s, o);
+	printf(" size: %i\n", len);
 	// printf("/////// %%X ///////\n");
 	// printf("printf:    %X\n", -789);
 	// ft_printf("ft_printf: %X\n", -789);	

@@ -3,49 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tairan <tairan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 20:27:20 by tairan            #+#    #+#             */
-/*   Updated: 2022/07/11 20:42:49 by tairan           ###   ########.fr       */
+/*   Updated: 2022/07/13 02:27:57 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
-
-char	*char_to_str(char c)
-{
-	char *s;
-	s = ft_calloc(2, 1);
-	if (!s)
-		return NULL;
-	s[0] = c;
-	return s;
-}
-
-char	*ft_str_toupper(char *s)
-{
-	int i;
-
-	i = 0;
-	while(s[i])
-	{	
-		s[i] = ft_toupper(s[i]);
-		i++;
-	}
-	return (s);
-}
-
-char	*get_ptr(unsigned long p)
-{
-	char	*s;
-	char	*tmp;
-	
-	s = ft_utoa(p, 16);
-	tmp = ft_strjoin("0x", s);
-	free(s);
-	return (tmp);
-}
 
 char	*get_str(char c, va_list args)
 {
@@ -54,7 +20,7 @@ char	*get_str(char c, va_list args)
 	if (c == '%')
 		return (ft_strdup("%"));
 	if (c == 's')
-		return ft_strdup(va_arg(args, char*));
+		return get_string(va_arg(args, char*));
 	if (c == 'i')
 		return (ft_itoa(va_arg(args, int)));
 	if (c == 'd')
@@ -84,7 +50,12 @@ int	print_fmt(char c, va_list args)
 	ft_putstr_fd(s, 1);
 	len = ft_strlen(s);
 	free(s);
-	return (len - 1);
+	if (c == 'c' && len == 0)
+	{
+		ft_putchar_fd(0, 1);
+		return (1);
+	}
+	return (len);
 }
 
 int	ft_vprintf(const char *format, va_list args)

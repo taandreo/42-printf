@@ -1,7 +1,7 @@
 .PHONY: libft.a all clean fclean re log bonus
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I . -arch x86_64
+CFLAGS = -Wall -Wextra -Werror -I .
 
 NAME = libft.a
 

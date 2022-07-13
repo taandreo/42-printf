@@ -1,11 +1,11 @@
 .PHONY: libft.a all clean fclean re log bonus
 
-CC = cc
+CC = clang
 INCLUDE = include
 NAME = libftprintf.a
 LIBFT = ./libft/libft.a
 LIBFT_DIR = ./libft
-CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE) -arch x86_64
+CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE)
 SOURCES_DIR = sources/
 SOURCES = $(wildcard $(SOURCES_DIR)*.c)
 OBJS = $(SOURCES:.c=.o)
@@ -35,7 +35,7 @@ fclean: clean
 all: $(NAME)
 
 exec: all
-	$(CC) $(CFLAGS) test.c -L . -lftprintf -I $(INCLUDE) && ./a.out 
+	$(CC) $(CFLAGS) main.c -L . -lftprintf -I $(INCLUDE) && ./a.out 
 
 # bonus: $(ALL_OBJS)
 # ar rcs $(NAME) $(ALL_OBJS)
