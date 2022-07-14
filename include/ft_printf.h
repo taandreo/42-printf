@@ -18,5 +18,9 @@
 
 int		ft_printf(const char *format, ...);
 char    *ft_utoa(unsigned long n, int base);
+char	*char_to_str(char c);
+char	*ft_str_toupper(char *s);
+char	*get_ptr(unsigned long p);
+char	*get_string(char *s);
 
 #endif

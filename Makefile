@@ -34,8 +34,11 @@ fclean: clean
 
 all: $(NAME)
 
-exec: all
-	$(CC) $(CFLAGS) main.c -L . -lftprintf -I $(INCLUDE) && ./a.out 
+main: all
+	$(CC) $(CFLAGS) main.c -L . -lftprintf -I $(INCLUDE) && ./a.out
+
+test: all
+	$(CC) $(CFLAGS) test.c -L . -lftprintf -I $(INCLUDE) && ./a.out 
 
 # bonus: $(ALL_OBJS)
 # ar rcs $(NAME) $(ALL_OBJS)
