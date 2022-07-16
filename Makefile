@@ -6,14 +6,18 @@ NAME = libftprintf.a
 LIBFT = ./libft/libft.a
 LIBFT_DIR = ./libft
 CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE)
-SOURCES_DIR = sources/
+SOURCES_DIR = mandatory/
+BONUS_SOURCES_DIR = bonus/
 SOURCES = $(wildcard $(SOURCES_DIR)*.c)
 OBJS = $(SOURCES:.c=.o)
+BONUS_SOURCES = $(wildcard $(BONUS_SOURCES_DIR)*.c)
+BONUS_OBJS = $(BONUS_SOURCES:.c=.o)
+ALL_OBJS = $(OBJS) $(BONUS_OBJS) 
 
 # BONUS_OBJS = $(BONUS:.c=.o)
 # ALL_OBJS = $(OBJS) $(BONUS_OBJS)
 
-sources/%.o: sources/%.c
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT)
@@ -23,8 +27,13 @@ $(LIBFT):
 	make bonus -C $(LIBFT_DIR)
 	cp -p $(LIBFT) $(NAME)
 
+bonus: $(BONUS_OBJS) $(LIBFT)
+	ar rcs $(NAME) $(BONUS_OBJS)
+
+all: $(NAME)
+
 clean:
-	rm -f $(OBJS)
+	rm -f $(ALL_OBJS)
 	make clean -C $(LIBFT_DIR)
 
 fclean: clean
@@ -32,20 +41,19 @@ fclean: clean
 	make fclean -C $(LIBFT_DIR)
 	rm -f a.out
 
-all: $(NAME)
-
-main: all
+main:
 	$(CC) $(CFLAGS) main.c -L . -lftprintf -I $(INCLUDE) && ./a.out
 
-test: all
+test:
 	$(CC) $(CFLAGS) test.c -L . -lftprintf -I $(INCLUDE) && ./a.out 
 
-# bonus: $(ALL_OBJS)
-# ar rcs $(NAME) $(ALL_OBJS)
+flags:
+	$(CC) $(CFLAGS) flags.c -L . -lftprintf -I $(INCLUDE) && ./a.out 
 
 re: fclean all
 
 log:
-	@echo $(OBJS)
+	echo $(ALL_OBJS)
+	# @echo $(OBJS)
 	# @echo $(BONUS_OBJS)
-	@echo $(CFLAGS)
+	# @echo $(CFLAGS)
