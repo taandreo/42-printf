@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   linked.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/12 18:49:23 by tairribe          #+#    #+#             */
-/*   Updated: 2022/07/16 19:27:45 by tairribe         ###   ########.fr       */
+/*   Created: 2022/07/11 04:40:51 by tairan            #+#    #+#             */
+/*   Updated: 2022/07/16 20:18:03 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
+#include <ft_printf.h>
 
-t_list	*ft_lstnew(void *content)
+void	print_list(t_list *list)
 {
-	t_list	*node;
+	int i;
+	while(list)
+	{
+		i = *(int*)(list->content);
+		printf("%i\n", i);
+		list = list->next;
+	}
+}
 
-	node = malloc(sizeof(t_list));
-	if (!node)
-		return (NULL);
-	node->content = content;
-	node->next = NULL;
-	return (node);
+int main(void)
+{
+	t_list *list;
+	int		*n;
+	int		*m;
+
+	n = ft_calloc(1, sizeof(int));
+	*n = 3;
+	m = ft_calloc(1, sizeof(int));
+	*m = 7;
+
+	ft_lstadd_front(&list, ft_lstnew(n));
+	ft_lstadd_front(&list, ft_lstnew(m));
+	print_list(list);
 }

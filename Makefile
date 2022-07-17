@@ -48,7 +48,10 @@ test:
 	$(CC) $(CFLAGS) test.c -L . -lftprintf -I $(INCLUDE) && ./a.out 
 
 flags:
-	$(CC) $(CFLAGS) flags.c -L . -lftprintf -I $(INCLUDE) && ./a.out 
+	$(CC) $(CFLAGS) flags.c -L . -lftprintf -I $(INCLUDE) && ./a.out
+
+linked:
+	$(CC) $(CFLAGS) linked.c -L . -lftprintf -I $(INCLUDE) && ./a.out
 
 re: fclean all
 
