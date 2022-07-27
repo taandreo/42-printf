@@ -31,8 +31,16 @@ void	test_operators()
 
 void func2()
 {
-	ft_printf("test c: %00000i test2: %i\n", 90, 42);
-	printf("test c: %00000i test2: %i\n", 90, 42);
+	// int i;
+
+	// i = ft_printf("%s, test c: %-0011x %X test2: %4i%10s\n", "macro", 90, 42, "gago");
+	// printf("return %i\n", i);
+
+	// i = printf("%s, test c: %-0011x %X test2: %4i%10s\n", "macro", 90, 42, "gago");
+	// printf("return %i\n", i);
+
+	ft_printf("%.2s\n", "abacate");
+	printf("%.2s\n", "abacate");
 }
 
 void func3()

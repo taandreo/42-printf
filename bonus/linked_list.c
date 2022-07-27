@@ -6,9 +6,16 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:53:49 by tairribe          #+#    #+#             */
-/*   Updated: 2022/07/16 19:05:52 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/07/26 20:50:21 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
+void	free_line(void *v)
+{
+	t_line *l;
+	l = (t_line*) v;
+	free(l->line);
+	free(l);
+}

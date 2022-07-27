@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 20:27:20 by tairan            #+#    #+#             */
-/*   Updated: 2022/07/17 01:11:11 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/07/26 22:21:47 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,67 @@ void	init_flag(t_flag *f)
 	f->arg_str  = NULL;
 }
 
+int	flag_check(const char *s, t_flag *f)
+{
+	int i;
+
+	i = 0;
+	while(ft_strchr("0-", s[i]))
+	{
+		if (s[i] == '0')
+			f->ch = '0';
+		if (s[i] == '-')
+			f->left = true;
+		i++;
+	}
+	if (f->ch == '0' && f->left)
+		f->ch = ' ';
+	return i;
+}
+
+int	get_width(const char *s, t_flag *f)
+{
+	int i;
+	char *nb;
+
+	i = 0;
+	while(ft_isdigit(s[i]))
+		i++;
+	nb = ft_substr(s, 0, i);
+	f->width = ft_atoi(nb);
+	free(nb);
+	return (i);
+}
+
+int	get_precision(const char *s, t_flag *f)
+{
+	int i;
+	char *nb;
+
+	i = 0;
+	if (s[i] == '.')
+	{
+		i++;
+		while(ft_isdigit(s[i]))
+			i++;
+		nb = ft_substr(s, 0, i);
+		printf("nb: %s\n", nb);
+		f->precision = ft_atoi(nb);
+		free(nb);
+	}
+	return (i);
+}
+
 t_flag flag_parse(const char *s, va_list args)
 {
 	t_flag f;
 	int i;
-	int start;
 
-	i = 0;
+	i = 1;
 	init_flag(&f);
-	while(s[++i] && s[i] == '0')
-		f.ch = '0';
-	start = i;
-	while(ft_isdigit(s[i]))
-		i++;
-	f.width = ft_atoi(ft_substr(s, start, i));
+	i += flag_check(&s[i], &f);
+	i += get_width(&s[i], &f);
+	i += get_precision(&s[i], &f);
 	if (ft_strchr("cspdiuxX%", s[i]))
 	{
 		f.arg_str = get_str(s[i], args);
@@ -90,29 +137,30 @@ t_flag flag_parse(const char *s, va_list args)
 		else
 			f.arg_size = ft_strlen(f.arg_str);
 		f.is_flag = true;
+		i++;
 	}
-	else
-		f.arg_str = ft_substr(s, 0, i);
 	f.read = i;
 	return (f); 
 }
 
 void	print_flag(t_flag f)
 {
-	printf("read:     %i\n", f.read);
-	printf("width:    %i\n", f.width);
-	printf("ch:       %i\n", f.ch);
-	printf("is_flag:  %i\n", f.is_flag);
-	printf("left:     %i\n", f.left);
-	printf("arg_str:  %s\n", f.arg_str);
-	printf("arg_size: %i\n", f.arg_size);
+	printf("read:      %i\n", f.read);
+	printf("width:     %i\n", f.width);
+	printf("ch:        %c\n", f.ch);
+	printf("is_flag:   %i\n", f.is_flag);
+	printf("left:      %i\n", f.left);
+	printf("arg_str:   %s\n", f.arg_str);
+	printf("arg_size:  %i\n", f.arg_size);
+	printf("precision: %i\n\n", f.precision);
 }
-
 
 void	append_str(t_list **list, const char *s, int size)
 {
 	t_line *line;
-	
+
+	// printf("size: %i\n", size);	
+	// printf("s: %s\n", s);	
 	line = ft_calloc(1, sizeof(t_line));
 	line->len  = size;
 	line->line = ft_calloc(size, sizeof(char));
@@ -120,32 +168,43 @@ void	append_str(t_list **list, const char *s, int size)
 	ft_lstadd_back(list, ft_lstnew(line));
 }
 
-void	append_flag(t_list **list, t_flag f)
+void	add_pad(t_flag f, t_line *l)
 {
-	t_line *line;
 
-	line = ft_calloc(1, sizeof(t_line));
-	if (f.is_flag && f.width > f.arg_size)
-	{
-		line->line = ft_calloc(f.width, sizeof(char));
-		line->len  = f.width;
+	char *text;
+	int pad_size;
+
+	text = NULL;
+	pad_size = f.width - f.arg_size;
+	
+	if (pad_size > 0){
+		text = ft_calloc(f.width, sizeof(char));
 		if (f.left)
 		{
-			ft_memset(&line->line[f.arg_size], f.ch, f.width - f.arg_size);
-			ft_memcpy(line->line, f.arg_str, f.arg_size);
+			ft_memset(&text[f.arg_size], f.ch, pad_size);
+			ft_memcpy(text, f.arg_str, f.arg_size);
 		}
 		else
 		{
-			ft_memset(line->line, f.ch, f.width - f.arg_size);
-			ft_memcpy(&line->line[f.arg_size], f.arg_str, f.arg_size);
+			ft_memset(text, f.ch, pad_size);
+			ft_memcpy(&text[pad_size], f.arg_str, f.arg_size);
 		}
+		l->line = text;
+		l->len = f.width;
 		free(f.arg_str);
 	} 
-	else 
-	{
-		line->line = f.arg_str;
-		line->len  = f.arg_size;
+	else {
+		l->line = f.arg_str;
+		l->len = f.arg_size;
 	}
+}
+
+void	append_flag(t_list **list, t_flag f)
+{
+	t_line *line;
+	line = ft_calloc(1, sizeof(t_line));
+
+	add_pad(f, line);
 	ft_lstadd_back(list, ft_lstnew(line));
 }
 
@@ -159,6 +218,7 @@ void	print_line(t_line l)
 	while(i < l.len)
 	{
 		ft_putchar_fd(s[i], 1);
+		i++;
 	}
 }
 
@@ -191,6 +251,7 @@ int	ft_vprintf(const char *format, va_list args)
 	i = 0;
 	n = 0;
 
+	list = NULL;
 	len = ft_strlen(format);
 	while (format[i] != '\0')
 	{
@@ -204,18 +265,19 @@ int	ft_vprintf(const char *format, va_list args)
 				append_flag(&list, f);
 				i += f.read;
 				n = i;
-			} else {
-				free(f.arg_str);
+			} 
+			else {
+				i++;
 			}
-		} 
-		i++;
-		append_str(&list, &format[n], i - n);
+		} else {
+			i++;
+		}
 	}
-	print_list(list);
-	return (0);
+	append_str(&list, &format[n], i - n);
+	len = print_list(list);
+	ft_lstclear(&list, free_line);
+	return (len);
 }
-
-
 
 int	ft_printf(const char *format, ...)
 {

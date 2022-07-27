@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:02:25 by tairan            #+#    #+#             */
-/*   Updated: 2022/07/16 23:16:46 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/07/26 22:11:42 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_flag
 	char	ch;
 	int		width;
 	int		read;
+	int		precision;
 	int		arg_size;
 	char	*arg_str;
 }			t_flag;
@@ -46,5 +47,6 @@ char	*char_to_str(char c);
 char	*ft_str_toupper(char *s);
 char	*get_ptr(unsigned long p);
 char	*get_string(char *s);
+void	free_line(void *v);
 
 #endif

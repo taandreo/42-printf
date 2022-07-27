@@ -1,6 +1,6 @@
 .PHONY: libft.a all clean fclean re log bonus
 
-CC = clang
+CC = clang-12
 INCLUDE = include
 NAME = libftprintf.a
 LIBFT = ./libft/libft.a
@@ -42,16 +42,16 @@ fclean: clean
 	rm -f a.out
 
 main:
-	$(CC) $(CFLAGS) main.c -L . -lftprintf -I $(INCLUDE) && ./a.out
+	$(CC) -Wall -Wextra -I $(INCLUDE) main.c -L . -lftprintf  && ./a.out
 
 test:
-	$(CC) $(CFLAGS) test.c -L . -lftprintf -I $(INCLUDE) && ./a.out 
+	$(CC) $(CFLAGS) test.c -L . -lftprintf && ./a.out 
 
 flags:
-	$(CC) $(CFLAGS) flags.c -L . -lftprintf -I $(INCLUDE) && ./a.out
+	$(CC) $(CFLAGS) flags.c -L . -lftprintf && ./a.out
 
 linked:
-	$(CC) $(CFLAGS) linked.c -L . -lftprintf -I $(INCLUDE) && ./a.out
+	$(CC) $(CFLAGS) linked.c -L . -lftprintf && ./a.out
 
 re: fclean all
 

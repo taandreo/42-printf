@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_studies.c                                :+:      :+:    :+:   */
+/*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yde-goes <yde-goes@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 20:39:39 by yde-goes          #+#    #+#             */
-/*   Updated: 2022/07/14 02:26:56 by yde-goes         ###   ########.fr       */
+/*   Updated: 2022/07/26 21:31:05 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void	precision_flag(void)
 			the mininum and maxinum digits of the number.
 		If number is lower, then zeros are added to
 			complete it.*/
-	printf("\t%2.8d\n", 1000);
+	printf("\t%-2.8d\n", 1000);
 
 	/*	If applied to strings, the flag shows the mininum
 			and maximum length of the given string.
