@@ -9,6 +9,8 @@ void	init_line(t_line *l)
 	l->line = NULL;
 }
 
+
+
 void	func1(void)
 {
 	t_line	test;
@@ -39,34 +41,33 @@ void func2()
 	// i = printf("%s, test c: %-0011x %X test2: %4i%10s\n", "macro", 90, 42, "gago");
 	// printf("return %i\n", i);
 
-	ft_printf("%.2s\n", "abacate");
-	printf("%.2s\n", "abacate");
+	// ft_printf("%-20.10x\n", 9999);
+	// printf("%-20.10x\n", 9999);
+	ft_printf("%.3d\n", 1);
+	printf("%.3d\n", 1);
 }
 
 void func3()
 {
-	char *s;
 	int len;
-	unsigned int n = +2147483648;
-	s = ft_utoa(n, 16);
-	printf("ft_utoa: %s\n", s);
-	printf("printf:  %x\n", n);
 
+	len = ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
+	printf("\nlen: %i\n", len);
 	len = printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
-	printf(" size: %i\n", len);
-	ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
-	printf(" size: %i\n", len);
-	ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
-	printf(" size: %i\n", len);
-	ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
-	printf(" size: %i\n", len);
-	s = NULL;
-	printf("%s", s);
-	printf(" size: %i\n", len);
+	printf("\nlen: %i\n", len);
+}
+
+void	func4()
+{
+	printf("%#x\n", 999);
+	printf("%#x\n", 0);
+	printf("%#X\n", -42);
+	printf("%+i\n", 0);
+	printf("%+i\n", 42);
 }
 
 int main(void)
 {
-	func2();
+	func4();
 }
 

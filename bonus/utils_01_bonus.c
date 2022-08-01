@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utoa.c                                          :+:      :+:    :+:   */
+/*   utils_01_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tairan <tairan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:17:38 by tairribe          #+#    #+#             */
-/*   Updated: 2022/07/11 19:49:14 by tairan           ###   ########.fr       */
+/*   Updated: 2022/07/31 16:09:16 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,3 +51,11 @@ char    *ft_utoa(unsigned long n, int base)
 	return (str_nb);
 }
 
+char *add_char(int size, char c)
+{
+	char *s;
+	
+	s = ft_calloc(size + 1, sizeof(char));
+	ft_memset(s, c, size);
+	return s;
+}

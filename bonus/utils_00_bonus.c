@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_bonus.c                                      :+:      :+:    :+:   */
+/*   utils_00_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 02:19:50 by tairribe          #+#    #+#             */
-/*   Updated: 2022/07/16 12:48:03 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/07/31 18:35:10 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,16 @@ char	*get_string(char *s)
 	if (s == NULL)
 		return(ft_strdup("(null)"));
 	return (ft_strdup(s));
+}
+
+char	*join(char *line, char *text)
+{
+	char	*tmp;
+
+	if (!line)
+		return (text);
+	tmp = ft_strjoin(line, text);
+	free(line);
+	free(text);
+	return (tmp);
 }

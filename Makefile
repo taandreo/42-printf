@@ -45,7 +45,7 @@ main:
 	$(CC) -Wall -Wextra -I $(INCLUDE) main.c -L . -lftprintf  && ./a.out
 
 test:
-	$(CC) $(CFLAGS) test.c -L . -lftprintf && ./a.out 
+	$(CC) -I $(INCLUDE) test.c -L . -lftprintf && ./a.out 
 
 flags:
 	$(CC) $(CFLAGS) flags.c -L . -lftprintf && ./a.out
