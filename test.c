@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 04:40:51 by tairan            #+#    #+#             */
-/*   Updated: 2022/07/31 22:58:16 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/08/01 18:46:50 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,19 @@ void	space(void)
 	printf("9: |% s|% s|% s|% s|% s|\n", " - ", "", "4", "", "2 ");  //9
 }
 
+
+void space2(void)
+{
+	printf("1:L% sL\n", "");
+	printf("1:L% 1sL\n", " teste");
+	printf("5:L% sL\n", " -"); // 5
+}
+
 int main(void)
 {
 	// dot2();
 	// zero();
-	space();
+	space2();
 	// char *message = 
 	// "************************\n"
 	// "********   %x   ********\n"

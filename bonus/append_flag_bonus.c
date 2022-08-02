@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:24:15 by tairribe          #+#    #+#             */
-/*   Updated: 2022/07/31 23:07:28 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/08/01 21:37:35 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,25 @@ void	add_precision(t_flag f, t_line *l)
 {
 	if (ft_strchr("iudxX", f.type))
 	{
+		if (l->line[0] == '0')
+		{
+			free(l->line);
+			l->line = ft_strdup("");
+		}
 		if (f.precision > l->len)
 			append_zero(f.precision, l, true);
 		if (ft_strchr("+-", l->line[0]) && f.precision > l->len - 1)
 			append_zero(f.precision, l, true);
 	} 
 	if (f.type == 's' && f.precision < l->len)
+	{
+		if (ft_strncmp("(null)", l->line, 6) == 0 && f.precision < 6)
+		{
+			l->len = 0;
+			return ;
+		}
 		l->len = f.precision;
+	}
 }
 
 void	add_pad(t_flag f, t_line *l)
@@ -87,15 +99,7 @@ void	add_plus(t_line *l)
 
 void	add_space(t_flag f, t_line *l)
 {
-	if (f.type == 's')
-	{
-		if (l->len == 0)
-		{
-			l->line = join(ft_strdup(""), l->line);
-			l->len++;
-		}
-	}
-	else if (l->line[0] != '-')
+	if (l->line[0] != '-' && ft_strchr("uid", f.type))
 	{
 		l->line = join(ft_strdup(" "), l->line);
 		l->len++;

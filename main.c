@@ -9,8 +9,6 @@ void	init_line(t_line *l)
 	l->line = NULL;
 }
 
-
-
 void	func1(void)
 {
 	t_line	test;
@@ -66,8 +64,14 @@ void	func4()
 	printf("%+i\n", 42);
 }
 
+void	func5()
+{
+	printf("%d\n", 0);
+	printf("%d\n", 0);
+}
+
 int main(void)
 {
-	func4();
+	func5();
 }
 
