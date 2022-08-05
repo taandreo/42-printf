@@ -66,8 +66,8 @@ void	func4()
 
 void	func5()
 {
-	printf("%d\n", 0);
-	printf("%d\n", 0);
+	// printf("%d\n", 0);
+	printf("%010.0d\n", 0);
 }
 
 int main(void)

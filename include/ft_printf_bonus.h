@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:02:25 by tairan            #+#    #+#             */
-/*   Updated: 2022/07/31 21:02:00 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/08/05 20:06:20 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,29 +45,34 @@ typedef struct s_flag
 	char	*arg_str;
 }			t_flag;
 
-
 int		ft_printf(const char *format, ...);
 // UTILS_00
 char	*ft_utoa(unsigned long n, int base);
 char	*char_to_str(char c);
 char	*get_string(char *s);
 char	*join(char *line, char *text);
-char 	*add_char(int size, char c);
+char	*add_char(int size, char c);
 char	*ft_str_toupper(char *s);
 // UTILS_01
 char	*get_ptr(unsigned long p);
 void	print_str(char *s, int len);
 // VERBOSE
-void	print_line(char *s, int len);
-int		print_fmt(char c, va_list args);
-void	print_flag(t_flag f);
+// void	print_line(char *s, int len);
+// int	print_fmt(char c, va_list args);
+// void	print_flag(t_flag f);
 // LINKED_LIST
 size_t	print_list(t_list *lst);
 void	free_line(void *v);
-// ARG_PARSE
+// ARG_PARSE_00
 t_flag	arg_parse(const char *s, va_list args);
+// ARG_PARSE_01
+void	add_plus(t_line *l);
+void	add_space(t_flag f, t_line *l);
+void	add_alt_form(t_flag f, t_line *l);
 // APPEND_FLAG
 void	append_flag(t_list **list, t_flag f);
 void	append_str(t_list **list, const char *s, int size);
+// GET_STR
+char	*get_str(char c, va_list args);
 
 #endif

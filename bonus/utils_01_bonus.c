@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:17:38 by tairribe          #+#    #+#             */
-/*   Updated: 2022/07/31 16:09:16 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/08/05 17:58:39 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ static int	get_size(unsigned long n, int base)
 	return (i);
 }
 
-char    *ft_utoa(unsigned long n, int base)
+char	*ft_utoa(unsigned long n, int base)
 {
-
 	int				re;
 	int				size;
 	char			*str_nb;
@@ -51,11 +50,11 @@ char    *ft_utoa(unsigned long n, int base)
 	return (str_nb);
 }
 
-char *add_char(int size, char c)
+char	*add_char(int size, char c)
 {
-	char *s;
-	
+	char	*s;
+
 	s = ft_calloc(size + 1, sizeof(char));
 	ft_memset(s, c, size);
-	return s;
+	return (s);
 }

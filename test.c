@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 04:40:51 by tairan            #+#    #+#             */
-/*   Updated: 2022/08/01 18:46:50 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/08/05 15:25:09 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,32 +96,38 @@ void	dot2(void)
 	len = ft_printf("ft_printf %.2i \n", -1);
 }
 
-void	space(void)
-{
-	printf("1: |% s|\n", ""); // 1
-	printf("2: |% 1s|\n", ""); // 2
-	printf("3: |% 1s|\n", ""); // 3
-	printf("4: |% s|\n", ""); // 4
-	printf("5: |% s|\n", "-"); // 5
-	printf("6: |% s|% s|\n", "", "-"); // 6
-	printf("7: |% s|% s|\n", " - ", "");  // 7
-	printf("8: |% s|% s|% s|% s|\n", " - ", "", "4", ""); // 8
-	printf("9: |% s|% s|% s|% s|% s|\n", " - ", "", "4", "", "2 ");  //9
-}
+// void	space(void)
+// {
+// 	printf("1: |% s|\n", ""); // 1
+// 	printf("2: |% 1s|\n", ""); // 2
+// 	printf("3: |% 1s|\n", ""); // 3
+// 	printf("4: |% s|\n", ""); // 4
+// 	printf("5: |% s|\n", "-"); // 5
+// 	printf("6: |% s|% s|\n", "", "-"); // 6
+// 	printf("7: |% s|% s|\n", " - ", "");  // 7
+// 	printf("8: |% s|% s|% s|% s|\n", " - ", "", "4", ""); // 8
+// 	printf("9: |% s|% s|% s|% s|% s|\n", " - ", "", "4", "", "2 ");  //9
+// }
 
 
-void space2(void)
+// void space2(void)
+// {
+// 	printf("1:L% sL\n", "");
+// 	printf("1:L% 1sL\n", " teste");
+// 	printf("5:L% sL\n", " -"); // 5
+// }
+
+void	pre00(void)
 {
-	printf("1:L% sL\n", "");
-	printf("1:L% 1sL\n", " teste");
-	printf("5:L% sL\n", " -"); // 5
+	ft_printf("ft_printf: %01.d\n", 0);
+	printf("printf:   %01.d\n", 0);
 }
 
 int main(void)
 {
 	// dot2();
 	// zero();
-	space2();
+	pre00();
 	// char *message = 
 	// "************************\n"
 	// "********   %x   ********\n"
