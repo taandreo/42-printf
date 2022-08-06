@@ -6,13 +6,13 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:24:15 by tairribe          #+#    #+#             */
-/*   Updated: 2022/08/05 20:00:41 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/08/05 21:34:36 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int	get_width(const char *s, t_flag *f)
+static int	get_width(const char *s, t_flag *f)
 {
 	int		i;
 	char	*nb;
@@ -26,7 +26,7 @@ int	get_width(const char *s, t_flag *f)
 	return (i);
 }
 
-int	get_precision(const char *s, t_flag *f)
+static int	get_precision(const char *s, t_flag *f)
 {
 	int		i;
 	char	*nb;
@@ -45,7 +45,7 @@ int	get_precision(const char *s, t_flag *f)
 	return (i);
 }
 
-void	init_flag(t_flag *f)
+static void	init_flag(t_flag *f)
 {
 	f->left = false;
 	f->is_flag = false;
@@ -61,7 +61,7 @@ void	init_flag(t_flag *f)
 	f->precision = -1;
 }
 
-int	flag_check(const char *s, t_flag *f)
+static int	flag_check(const char *s, t_flag *f)
 {
 	int	i;
 

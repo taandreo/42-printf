@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 18:24:15 by tairribe          #+#    #+#             */
-/*   Updated: 2022/08/05 20:09:06 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/08/05 21:35:00 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	add_precision(t_flag *f, t_line *l)
 	}
 }
 
-void	add_zero(t_flag f, t_line *l)
+static void	add_zero(t_flag f, t_line *l)
 {
 	append_zero(f.width, l, false);
 }

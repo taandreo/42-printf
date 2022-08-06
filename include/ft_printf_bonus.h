@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:02:25 by tairan            #+#    #+#             */
-/*   Updated: 2022/08/05 20:06:20 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/08/05 21:41:41 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_BONUS_H
 # include <stdarg.h>
 // # include <stdlib.h>
-# include <stdio.h>
+// # include <stdio.h>
 # include "../libft/libft.h"
 
 typedef enum e_bool
@@ -55,11 +55,6 @@ char	*add_char(int size, char c);
 char	*ft_str_toupper(char *s);
 // UTILS_01
 char	*get_ptr(unsigned long p);
-void	print_str(char *s, int len);
-// VERBOSE
-// void	print_line(char *s, int len);
-// int	print_fmt(char c, va_list args);
-// void	print_flag(t_flag f);
 // LINKED_LIST
 size_t	print_list(t_list *lst);
 void	free_line(void *v);

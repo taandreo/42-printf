@@ -6,13 +6,13 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 20:27:20 by tairan            #+#    #+#             */
-/*   Updated: 2022/08/05 19:25:19 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/08/05 21:38:52 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-void	read_format(const char *format, t_list	**list, va_list args, int len)
+static void	read_format(const char *format, t_list	**l, va_list args, int len)
 {
 	int		i;
 	int		n;
@@ -27,8 +27,8 @@ void	read_format(const char *format, t_list	**list, va_list args, int len)
 			f = arg_parse(&format[i], args);
 			if (f.is_flag)
 			{
-				append_str(list, &format[n], i - n);
-				append_flag(list, f);
+				append_str(l, &format[n], i - n);
+				append_flag(l, f);
 				i += f.read;
 				n = i;
 			}
@@ -38,10 +38,10 @@ void	read_format(const char *format, t_list	**list, va_list args, int len)
 		else
 			i++;
 	}
-	append_str(list, &format[n], i - n);
+	append_str(l, &format[n], i - n);
 }
 
-int	ft_vprintf(const char *format, va_list args)
+static int	ft_vprintf(const char *format, va_list args)
 {
 	int		len;
 	t_list	*list;

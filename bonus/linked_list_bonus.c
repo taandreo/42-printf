@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:53:49 by tairribe          #+#    #+#             */
-/*   Updated: 2022/08/05 19:28:34 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/08/05 21:33:02 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	free_line(void *v)
 	free(l);
 }
 
-void	print_str(char *s, int len)
+static void	print_str(char *s, int len)
 {
 	int	i;
 
