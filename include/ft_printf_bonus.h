@@ -6,15 +6,13 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:02:25 by tairan            #+#    #+#             */
-/*   Updated: 2022/08/05 21:41:41 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/08/06 01:49:46 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_BONUS_H
 # define FT_PRINTF_BONUS_H
 # include <stdarg.h>
-// # include <stdlib.h>
-// # include <stdio.h>
 # include "../libft/libft.h"
 
 typedef enum e_bool
