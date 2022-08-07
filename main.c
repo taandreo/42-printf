@@ -72,6 +72,6 @@ void	func5()
 
 int main(void)
 {
-	func5();
+	func3();
 }
 

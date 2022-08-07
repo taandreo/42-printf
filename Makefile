@@ -6,16 +6,23 @@ NAME = libftprintf.a
 LIBFT = ./libft/libft.a
 LIBFT_DIR = ./libft
 CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE)
-SOURCES_DIR = mandatory/
-BONUS_SOURCES_DIR = bonus/
-SOURCES = $(wildcard $(SOURCES_DIR)*.c)
-OBJS = $(SOURCES:.c=.o)
-BONUS_SOURCES = $(wildcard $(BONUS_SOURCES_DIR)*.c)
-BONUS_OBJS = $(BONUS_SOURCES:.c=.o)
-ALL_OBJS = $(OBJS) $(BONUS_OBJS) 
 
-# BONUS_OBJS = $(BONUS:.c=.o)
-# ALL_OBJS = $(OBJS) $(BONUS_OBJS)
+SOURCES = mandatory/ft_printf.c \
+		mandatory/ft_utoa.c \
+		mandatory/utils.c \
+
+BONUS_SOURCES = bonus/append_flag_00_bonus.c \
+		bonus/append_flag_01_bonus.c \
+		bonus/arg_parse_bonus.c \
+		bonus/ft_printf_bonus.c \
+		bonus/get_str_bonus.c \
+		bonus/linked_list_bonus.c \
+		bonus/utils_00_bonus.c \
+		bonus/utils_01_bonus.c \
+
+OBJS = $(SOURCES:.c=.o)
+BONUS_OBJS = $(BONUS_SOURCES:.c=.o)
+ALL_OBJS = $(OBJS) $(BONUS_OBJS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
