@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tairan <tairan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:17:38 by tairribe          #+#    #+#             */
-/*   Updated: 2022/07/11 19:49:14 by tairan           ###   ########.fr       */
+/*   Updated: 2022/08/07 12:02:26 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@ static int	get_size(unsigned long n, int base)
 	return (i);
 }
 
-char    *ft_utoa(unsigned long n, int base)
+char	*ft_utoa(unsigned long n, int base)
 {
-
-	int				re;
-	int				size;
-	char			*str_nb;
+	int		re;
+	int		size;
+	char	*str_nb;
 
 	if (base < 2 || base > 16)
 		return (NULL);
@@ -50,4 +49,3 @@ char    *ft_utoa(unsigned long n, int base)
 	}
 	return (str_nb);
 }
-

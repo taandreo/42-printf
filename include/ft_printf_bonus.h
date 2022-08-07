@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 23:02:25 by tairan            #+#    #+#             */
-/*   Updated: 2022/08/06 01:49:46 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/08/07 11:54:10 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_line
 typedef struct s_flag
 {
 	t_bool	left;
-	t_bool	is_flag;	
+	t_bool	is_flag;
 	t_bool	hash;
 	t_bool	plus;
 	t_bool	space;

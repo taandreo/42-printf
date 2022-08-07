@@ -8,11 +8,11 @@ This project is the first with a very open approach in the way that you can stru
 
 I also chose to apply the concept of linked lists in the code to deal with the arbitrary number of arguments, that was first seen in the bonus part of the libft project.  
 
+## Build
 Build the mandatory part:
 ```
 make
 ```
-
 Build the bonus part:
 ```
 make bonus

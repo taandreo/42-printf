@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 20:27:20 by tairan            #+#    #+#             */
-/*   Updated: 2022/07/13 02:27:57 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/08/07 11:58:47 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ char	*get_str(char c, va_list args)
 	if (c == '%')
 		return (ft_strdup("%"));
 	if (c == 's')
-		return get_string(va_arg(args, char*));
+		return (get_string(va_arg(args, char *)));
 	if (c == 'i')
 		return (ft_itoa(va_arg(args, int)));
 	if (c == 'd')
-		return(ft_itoa(va_arg(args, int)));
+		return (ft_itoa(va_arg(args, int)));
 	if (c == 'u')
-		return(ft_utoa(va_arg(args, unsigned int), 10));
+		return (ft_utoa(va_arg(args, unsigned int), 10));
 	if (c == 'x')
-		return(ft_utoa(va_arg(args, unsigned int), 16));
+		return (ft_utoa(va_arg(args, unsigned int), 16));
 	if (c == 'X')
 		return (ft_str_toupper(ft_utoa(va_arg(args, unsigned int), 16)));
 	if (c == 'p')
-		return(get_ptr((unsigned long) va_arg(args, void*)));
-	return NULL;
+		return (get_ptr((unsigned long) va_arg(args, void *)));
+	return (NULL);
 }
 
 int	print_fmt(char c, va_list args)
@@ -59,13 +59,12 @@ int	print_fmt(char c, va_list args)
 
 int	ft_vprintf(const char *format, va_list args)
 {
-	int len;
-	int i;
-	int n;
+	int	len;
+	int	i;
+	int	n;
 
 	i = 0;
 	n = 0;
-
 	len = ft_strlen(format);
 	while (format[i] != '\0')
 	{
@@ -73,22 +72,24 @@ int	ft_vprintf(const char *format, va_list args)
 		{
 			i++;
 			n += print_fmt(format[i], args);
-		} 
-		else {
+		}
+		else
+		{
 			ft_putchar_fd(format[i], 1);
 			n++;
 		}
 		i++;
-	}		
-	return(n);
+	}
+	return (n);
 }
 
 int	ft_printf(const char *format, ...)
 {
-	int	len;
+	int		len;
 	va_list	args;
+
 	va_start(args, format);
 	len = ft_vprintf(format, args);
 	va_end(args);
-	return(len);
+	return (len);
 }

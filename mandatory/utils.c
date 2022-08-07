@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 02:19:50 by tairribe          #+#    #+#             */
-/*   Updated: 2022/07/13 02:27:23 by tairribe         ###   ########.fr       */
+/*   Updated: 2022/08/07 12:01:34 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,21 @@
 
 char	*char_to_str(char c)
 {
-	char *s;
+	char	*s;
+
 	s = ft_calloc(2, 1);
 	if (!s)
-		return NULL;
+		return (NULL);
 	s[0] = c;
-	return s;
+	return (s);
 }
 
 char	*ft_str_toupper(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(s[i])
+	while (s[i])
 	{	
 		s[i] = ft_toupper(s[i]);
 		i++;
@@ -41,7 +42,7 @@ char	*get_ptr(unsigned long p)
 	char	*tmp;
 
 	if (p == 0)
-		return(ft_strdup("(nil)"));
+		return (ft_strdup("(nil)"));
 	s = ft_utoa(p, 16);
 	tmp = ft_strjoin("0x", s);
 	free(s);
@@ -51,6 +52,6 @@ char	*get_ptr(unsigned long p)
 char	*get_string(char *s)
 {
 	if (s == NULL)
-		return(ft_strdup("(null)"));
+		return (ft_strdup("(null)"));
 	return (ft_strdup(s));
 }
